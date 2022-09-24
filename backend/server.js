@@ -1,9 +1,13 @@
 const express = require('express')
+const colors = require('colors')
+const connectDB = require('./config/db')
 const dotenv = require('dotenv').config()
 const { errorHandler } = require('./middleware/error-middleware')
 const app = express()
 
 const port = process.env.PORT || 3000
+
+connectDB()
 
 // body parser middleware
 app.use(express.json())

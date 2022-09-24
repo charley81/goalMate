@@ -2,6 +2,7 @@
 // using async await we would use try / catch...instead what we are doing is using a npm package called express-async-handler to hanler our errors
 
 const asyncHandler = require('express-async-handler')
+const Goal = require('../models/goal-model')
 
 // @params getGoals
 // @route GET /api/goals
