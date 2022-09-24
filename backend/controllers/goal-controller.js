@@ -1,41 +1,44 @@
-const asyncHandler = require('express-async -handler')
+// async functions because mongoose gives us back a promise
+// using async await we would use try / catch...instead what we are doing is using a npm package called express-async-handler to hanler our errors
 
-// @desc get goals
-// @route GET api/goals
+const asyncHandler = require('express-async-handler')
+
+// @params getGoals
+// @route GET /api/goals
 // @access private
 const getGoals = asyncHandler(async (req, res) => {
-  res.status(200).json({ msg: 'get goals' })
+  res.status(200).json({ message: 'get goals' })
 })
 
-// @desc create goal
-// @route POST api/goals
+// @params postGoal
+// @route POST /api/goals
 // @access private
-const createGoal = asyncHandler(async (req, res) => {
+const postGoal = asyncHandler(async (req, res) => {
   if (!req.body.text) {
     res.status(400)
     throw new Error('please add a text field')
   } else {
-    res.status(200).json({ message: 'create goal' })
+    res.status(200).json({ message: 'post goal' })
   }
 })
 
-// @desc update goal
+// @params updateGoal
 // @route PUT api/goals/:id
 // @access private
 const updateGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ msg: `update goal ${req.params.id}` })
+  res.status(200).json({ message: `updated message ${req.params.id}` })
 })
 
-// @desc delete goal
+// @params deleteGoal
 // @route DELETE api/goals/:id
 // @access private
 const deleteGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ msg: `delete goal ${req.params.id}` })
+  res.status(200).json({ message: `deleted goal ${req.params.id}` })
 })
 
 module.exports = {
   getGoals,
-  createGoal,
+  postGoal,
   updateGoal,
   deleteGoal,
 }
