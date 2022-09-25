@@ -1,0 +1,29 @@
+const asyncHandler = require('express-async-handler')
+const user = require('../models/user-model')
+
+// @desc register new user
+// @route POST /api/users
+// @access public
+const registerUser = asyncHandler(async (req, res) => {
+  res.json({ message: 'user registered' })
+})
+
+// @desc authenticate a user
+// @route POST /api/users/login
+// @access public
+const loginUser = asyncHandler(async (req, res) => {
+  res.json({ message: 'login user' })
+})
+
+// @desc get user data
+// @route GET /api/users/me
+// @access public
+const getMe = asyncHandler(async (req, res) => {
+  res.json({ message: 'user data display' })
+})
+
+module.exports = {
+  registerUser,
+  loginUser,
+  getMe,
+}
